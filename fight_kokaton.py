@@ -141,8 +141,8 @@ class Score:
     def __init__(self):
         self.fonto = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
         self.fill = (0,0,255)
-        self.score = 0
-        self.img = self.fonto.render("スコア:"+str(self.score), True, self.fill)
+        self.value = 0
+        self.img = self.fonto.render("スコア:"+str(self.value), True, self.fill)
         self.rct: pg.Rect = self.img.get_rect()
         self.rct.centerx = 100
         self.rct.centery = HEIGHT-50
@@ -151,7 +151,7 @@ class Score:
         """
         現在のスコアを表示させる文字列Surfaceの生成
         """
-        self.img = self.fonto.render("スコア:"+str(self.score), True, self.fill)
+        self.img = self.fonto.render("スコア:"+str(self.value), True, self.fill)
         screen.blit(self.img, self.rct)
 
 
@@ -208,7 +208,7 @@ def main():
                     beam = None
                     bombs[i] = None
                     bird.change_img(6, screen) #衝突したらこうかとんが喜ぶ画像
-                    score.score += 1
+                    score.value += 1
                     pg.display.update()
 
         #ビームによってNoneになった爆弾をリストからなくす
